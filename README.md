@@ -1,4 +1,4 @@
-# Marvel Superhero Explorer App 🦸‍♂️💥
+# Comics Explorer App 📚🦸‍♂️
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-SlashGil%2Fmarvel-181717?style=for-the-badge&logo=github)](https://github.com/SlashGil/marvel)
 [![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android)](https://developer.android.com/)
@@ -26,11 +26,11 @@ An Android Native application built with modern Android development practices, d
 
 ## 📱 Features
 
-- **Marvel & Superhero Explorer**: Responsive grid displaying superheroes with publisher filtering (Marvel Comics, DC Comics, Dark Horse Comics).
+- **Multi-Vendor Comics Explorer**: Responsive grid displaying superheroes across all publishers (Marvel Comics, DC Comics, Dark Horse Comics, etc.).
 - **Offline-First Room Database**: Persistent local storage using `data.local.contract` & `data.local.impl` architecture for instant offline access.
-- **WorkManager A-Z Background Sync**: Pre-fetches superhero data sequentially for letters 'A' through 'Z' in the background with real-time foreground notifications and a completion alert when the database is ready.
+- **WorkManager A-Z Background Sync**: Pre-fetches comic superhero data sequentially for letters 'A' through 'Z' in the background with real-time foreground notifications and a completion alert when the database is ready.
 - **High-Performance Image Caching**: Configured **Coil 3** with a 100MB disk/memory cache and CDN URL remapping for **10x faster image rendering**.
-- **Product-Flavor Animated Splash Screen**: 3D Y-axis flip animation transitioning from **Dev Blueprint App Icon** to **Prod Marvel App Icon**, surviving activity configuration changes (`rememberSaveable`).
+- **Product-Flavor Animated Splash Screen**: 3D Y-axis flip animation transitioning from **Dev Blueprint App Icon** to **Prod Comics App Icon**, surviving activity configuration changes (`rememberSaveable`).
 - **Spoke Character Detail View**: Full character sheet featuring animated powerstats bar charts, origin, alignment, and team affiliations.
 - **Real-Time Search**: Instant superhero lookup with debounced query processing.
 
@@ -43,8 +43,8 @@ The application follows **Clean Architecture** principles separated into distinc
 ```
 ├── domain          # Pure Kotlin: Models, Repository Interfaces, Use Cases
 ├── data            # DTOs, Mappers, Remote API, Local Room Database & DAOs
-│   ├── local       # contract (MarvelLocalDataSource) & impl (MarvelLocalDataSourceImpl, Room DB, DAO, Entities)
-│   └── remote      # contract (MarvelRemoteDataSource) & impl (Retrofit API, Interceptor)
+│   ├── local       # contract (ComicsLocalDataSource) & impl (ComicsLocalDataSourceImpl, Room DB, DAO, Entities)
+│   └── remote      # contract (ComicsRemoteDataSource) & impl (Retrofit API, Interceptor)
 ├── presentation    # MVVM: ViewModels, UI State, Jetpack Compose Screens & Components
 ├── worker          # WorkManager (AlphabetSyncWorker with Foreground Notifications)
 ├── di              # Hilt Modules (NetworkModule, DatabaseModule, LocalDataSourceModule, RepositoryModule)
@@ -120,7 +120,7 @@ The project includes a complete GitHub Actions pipeline defined in `.github/work
    - Compiles code with Java 17.
    - Runs unit tests (`./gradlew testDevDebugUnitTest`).
    - Builds Debug APK (`./gradlew assembleDevDebug`).
-   - Saves APK artifacts (`marvel-debug-apk`).
+   - Saves APK artifacts (`comics-dev-debug-apk`).
 
 2. **Firebase Distribution**:
    - Automatically deploys the debug APK to **Firebase App Distribution** on pushes to `main`/`master`.
