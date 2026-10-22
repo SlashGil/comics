@@ -5,26 +5,42 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     <group
-        android:scaleX="0.14"
-        android:scaleY="0.14"
-        android:translateX="18.1"
-        android:translateY="18.1">
-        <!-- Wireframe M -->
+        android:scaleX="0.16"
+        android:scaleY="0.16"
+        android:translateX="7.6"
+        android:translateY="6.0">
+        <!-- Magenta Wireframe Speech Bubble -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#F472B6"
+            android:strokeWidth="6"
+            android:pathData="M120,120 L400,120 C422,120 440,138 440,160 L440,300 C440,322 422,340 400,340 L360,340 L360,420 L280,340 L120,340 C98,340 80,322 80,300 L80,160 C80,138 98,120 120,120 Z" />
+
+        <!-- Cyan Wireframe Speech Bubble -->
         <path
             android:fillColor="#00000000"
             android:strokeColor="#38BDF8"
-            android:strokeWidth="10"
-            android:pathData="M 100,380 L 100,130 L 190,130 L 256,250 L 322,130 L 412,130 L 412,380 L 342,380 L 342,220 L 276,340 L 236,340 L 170,220 L 170,380 Z" />
-        <!-- Dev Nodes -->
-        <path android:fillColor="#ED1D24" android:pathData="M100,130m-12,0a12,12 0 1,0 24,0a12,12 0 1,0 -24,0" />
-        <path android:fillColor="#ED1D24" android:pathData="M412,130m-12,0a12,12 0 1,0 24,0a12,12 0 1,0 -24,0" />
-        <path android:fillColor="#ED1D24" android:pathData="M256,250m-12,0a12,12 0 1,0 24,0a12,12 0 1,0 -24,0" />
-        <path android:fillColor="#ED1D24" android:pathData="M100,380m-12,0a12,12 0 1,0 24,0a12,12 0 1,0 -24,0" />
-        <path android:fillColor="#ED1D24" android:pathData="M412,380m-12,0a12,12 0 1,0 24,0a12,12 0 1,0 -24,0" />
+            android:strokeWidth="6"
+            android:pathData="M180,180 L460,180 C482,180 500,198 500,220 L500,360 C500,382 482,400 460,400 L380,400 L300,480 L300,400 L180,400 C158,400 140,382 140,360 L140,220 C140,198 158,180 180,180 Z" />
+
+        <!-- Yellow Wireframe Action Star -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FBBF24"
+            android:strokeWidth="4"
+            android:pathData="M320,220 L340,250 L390,240 L350,280 L380,340 L320,310 L260,340 L290,280 L250,240 L300,250 Z" />
+
+        <!-- Technical Nodes -->
+        <path android:fillColor="#F472B6" android:pathData="M120,120m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#F472B6" android:pathData="M280,340m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#F472B6" android:pathData="M360,420m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#38BDF8" android:pathData="M180,180m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#38BDF8" android:pathData="M300,480m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#FBBF24" android:pathData="M320,220m-5,0a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
     </group>
 
-    <!-- Debug Construction Banner (Corner) -->
-    <path android:fillColor="#FACC15" android:pathData="M 0,0 L 35,0 L 0,35 Z" />
-    <path android:fillColor="#000000" android:fillAlpha="0.8" android:pathData="M 8,0 L 18,0 L 0,18 L 0,8 Z" />
-    <path android:fillColor="#000000" android:fillAlpha="0.8" android:pathData="M 26,0 L 35,0 L 0,35 L 0,26 Z" />
+    <!-- Dev Construction Corner Banner -->
+    <path android:fillColor="#FACC15" android:pathData="M0,0 L35,0 L0,35 Z" />
+    <path android:fillColor="#0F172A" android:fillAlpha="0.8" android:pathData="M8,0 L18,0 L0,18 L0,8 Z" />
+    <path android:fillColor="#0F172A" android:fillAlpha="0.8" android:pathData="M26,0 L35,0 L0,35 L0,26 Z" />
 </vector>

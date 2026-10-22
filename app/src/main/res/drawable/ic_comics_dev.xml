@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <!-- Technical Dark Background -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M0,0h512v512h-512z" />
+
+    <!-- Blueprint Grid Lines -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#1E293B"
+        android:strokeWidth="4"
+        android:pathData="M0,128h512 M0,256h512 M0,384h512 M128,0v512 M256,0v512 M384,0v512" />
+
+    <!-- Centered Content Group -->
+    <group
+        android:translateX="-34"
+        android:translateY="-44">
+
+        <!-- Magenta Wireframe Speech Bubble -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#F472B6"
+            android:strokeWidth="6"
+            android:pathData="M120,120 L400,120 C422,120 440,138 440,160 L440,300 C440,322 422,340 400,340 L360,340 L360,420 L280,340 L120,340 C98,340 80,322 80,300 L80,160 C80,138 98,120 120,120 Z" />
+
+        <!-- Cyan Wireframe Speech Bubble -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#38BDF8"
+            android:strokeWidth="6"
+            android:pathData="M180,180 L460,180 C482,180 500,198 500,220 L500,360 C500,382 482,400 460,400 L380,400 L300,480 L300,400 L180,400 C158,400 140,382 140,360 L140,220 C140,198 158,180 180,180 Z" />
+
+        <!-- Yellow Wireframe Action Star -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FBBF24"
+            android:strokeWidth="4"
+            android:pathData="M320,220 L340,250 L390,240 L350,280 L380,340 L320,310 L260,340 L290,280 L250,240 L300,250 Z" />
+
+        <!-- Technical Nodes -->
+        <path android:fillColor="#F472B6" android:pathData="M120,120m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#F472B6" android:pathData="M280,340m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#F472B6" android:pathData="M360,420m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#38BDF8" android:pathData="M180,180m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#38BDF8" android:pathData="M300,480m-6,0a6,6 0 1,0 12,0a6,6 0 1,0 -12,0" />
+        <path android:fillColor="#FBBF24" android:pathData="M320,220m-5,0a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    </group>
+
+    <!-- Dev Construction Corner Banner -->
+    <path android:fillColor="#FACC15" android:pathData="M0,0 L160,0 L0,160 Z" />
+    <path android:fillColor="#0F172A" android:fillAlpha="0.8" android:pathData="M40,0 L80,0 L0,80 L0,40 Z" />
+    <path android:fillColor="#0F172A" android:fillAlpha="0.8" android:pathData="M120,0 L160,0 L0,160 L0,120 Z" />
+</vector>

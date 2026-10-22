@@ -5,12 +5,32 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     <group
-        android:scaleX="0.21"
-        android:scaleY="0.21"
-        android:translateX="0"
-        android:translateY="0">
+        android:scaleX="0.16"
+        android:scaleY="0.16"
+        android:translateX="7.6"
+        android:translateY="6.0">
+        <!-- Crimson Background Speech Bubble -->
         <path
-            android:fillColor="#00000000"
-            android:pathData="M0,0h512v512h-512z" />
+            android:fillColor="#E11D48"
+            android:strokeColor="#0F172A"
+            android:strokeWidth="12"
+            android:strokeLineJoin="round"
+            android:pathData="M120,120 L400,120 C422,120 440,138 440,160 L440,300 C440,322 422,340 400,340 L360,340 L360,420 L280,340 L120,340 C98,340 80,322 80,300 L80,160 C80,138 98,120 120,120 Z" />
+
+        <!-- Pop Yellow Foreground Speech Bubble -->
+        <path
+            android:fillColor="#FBBF24"
+            android:strokeColor="#0F172A"
+            android:strokeWidth="12"
+            android:strokeLineJoin="round"
+            android:pathData="M180,180 L460,180 C482,180 500,198 500,220 L500,360 C500,382 482,400 460,400 L380,400 L300,480 L300,400 L180,400 C158,400 140,382 140,360 L140,220 C140,198 158,180 180,180 Z" />
+
+        <!-- White Action Burst Star -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:strokeColor="#0F172A"
+            android:strokeWidth="10"
+            android:strokeLineJoin="round"
+            android:pathData="M320,220 L340,250 L390,240 L350,280 L380,340 L320,310 L260,340 L290,280 L250,240 L300,250 Z" />
     </group>
 </vector>
