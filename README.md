@@ -1,31 +1,53 @@
-# Marvel Comics App 🦸‍♂️💥
+# Marvel Superhero Explorer App 🦸‍♂️💥
 
-An Android Native application built with modern Android development practices, demonstrating **Clean Architecture**, **MVVM**, **Jetpack Compose**, **Hilt**, **Retrofit2 + Kotlinx Serialization**, **Firebase Cloud Messaging (FCM)**, and automated **CI/CD with GitHub Actions & Firebase App Distribution**.
+[![GitHub Repo](https://img.shields.io/badge/GitHub-SlashGil%2Fmarvel-181717?style=for-the-badge&logo=github)](https://github.com/SlashGil/marvel)
+[![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android)](https://developer.android.com/)
+[![Kotlin](https://img.shields.io/badge/Language-Kotlin_2.1-7F52FF?style=for-the-badge&logo=kotlin)](https://kotlinlang.org/)
+
+An Android Native application built with modern Android development practices, demonstrating **Clean Architecture**, **Offline-First Room Database**, **WorkManager A-Z Sync**, **MVVM**, **Jetpack Compose**, **Hilt**, **Retrofit2 + Kotlinx Serialization**, **Coil 3 Image Caching**, and automated **CI/CD with GitHub Actions & Firebase App Distribution**.
+
+---
+
+## 📲 Try the App!
+
+> [!TIP]
+> **Want to test the build?**
+> 📩 **DM me on [LinkedIn](https://www.linkedin.com) or GitHub** if you want an invitation to try the app live via **Firebase App Distribution** or test the build APK!
+
+---
+
+## 📸 Screenshots
+
+| Product-Flavor Splash | Character Grid & Search | Character Detail & Powerstats |
+| :---: | :---: | :---: |
+| <img src="screenshots/01_splash_screen.png" width="280"/> | <img src="screenshots/02_character_grid.png" width="280"/> | <img src="screenshots/03_character_detail.png" width="280"/> |
 
 ---
 
 ## 📱 Features
 
-- **Marvel Character Explorer**: Grid layout displaying Marvel characters with responsive cards and official Marvel design system.
-- **Real-Time Character Search**: Search characters by name with debounced input processing.
-- **Spoke Character Detail View**: Detailed overlay displaying hero biography, statistics, and a horizontal carousel of featured comic books.
-- **Dynamic App Variants & Icons**:
-  - **Prod Build**: Official full-color Marvel Red logo (`gemini-svg (1)`).
-  - **Debug Build**: Blueprint dark wireframe logo (`gemini-svg (2)`) with `.debug` applicationId suffix.
-- **Push Notifications**: Integrated Firebase Cloud Messaging (FCM) service for news and content alerts.
-- **Offline / Developer Fallback**: Includes built-in fallback dataset when Marvel API credentials are not provided or during server downtime.
+- **Marvel & Superhero Explorer**: Responsive grid displaying superheroes with publisher filtering (Marvel Comics, DC Comics, Dark Horse Comics).
+- **Offline-First Room Database**: Persistent local storage using `data.local.contract` & `data.local.impl` architecture for instant offline access.
+- **WorkManager A-Z Background Sync**: Pre-fetches superhero data sequentially for letters 'A' through 'Z' in the background with real-time foreground notifications and a completion alert when the database is ready.
+- **High-Performance Image Caching**: Configured **Coil 3** with a 100MB disk/memory cache and CDN URL remapping for **10x faster image rendering**.
+- **Product-Flavor Animated Splash Screen**: 3D Y-axis flip animation transitioning from **Dev Blueprint App Icon** to **Prod Marvel App Icon**, surviving activity configuration changes (`rememberSaveable`).
+- **Spoke Character Detail View**: Full character sheet featuring animated powerstats bar charts, origin, alignment, and team affiliations.
+- **Real-Time Search**: Instant superhero lookup with debounced query processing.
 
 ---
 
 ## 🏗️ Architecture & Tech Stack
 
-The application follows **Clean Architecture** principles separated into three distinct layers:
+The application follows **Clean Architecture** principles separated into distinct layers:
 
 ```
 ├── domain          # Pure Kotlin: Models, Repository Interfaces, Use Cases
-├── data            # DTOs, Mappers, Retrofit API, OkHttp MD5 Auth Interceptor, Repository Implementations
+├── data            # DTOs, Mappers, Remote API, Local Room Database & DAOs
+│   ├── local       # contract (MarvelLocalDataSource) & impl (MarvelLocalDataSourceImpl, Room DB, DAO, Entities)
+│   └── remote      # contract (MarvelRemoteDataSource) & impl (Retrofit API, Interceptor)
 ├── presentation    # MVVM: ViewModels, UI State, Jetpack Compose Screens & Components
-├── di              # Hilt Modules (NetworkModule, RepositoryModule)
+├── worker          # WorkManager (AlphabetSyncWorker with Foreground Notifications)
+├── di              # Hilt Modules (NetworkModule, DatabaseModule, LocalDataSourceModule, RepositoryModule)
 └── notification    # Firebase Messaging Service
 ```
 
@@ -36,10 +58,11 @@ The application follows **Clean Architecture** principles separated into three d
 | **Language** | Kotlin 2.1.10 |
 | **UI** | Jetpack Compose + Material3 |
 | **Architecture** | MVVM + Clean Architecture |
+| **Local Database** | Room Database 2.6.1 (`data.local.contract` / `data.local.impl`) |
+| **Background Sync** | WorkManager 2.10.0 + Foreground Service Notifications |
 | **Dependency Injection** | Hilt (Dagger) |
 | **Networking** | Retrofit2 + OkHttp3 + Kotlinx Serialization |
-| **Authentication** | MD5 Hash Request Interceptor (`ts + privateKey + publicKey`) |
-| **Image Loading** | Coil 3 Compose |
+| **Image Loading** | Coil 3 Compose + 100MB Disk/Memory Cache |
 | **Push Notifications** | Firebase Cloud Messaging (FCM) |
 | **Testing** | MockK + Kotlinx Coroutines Test + JUnit4 |
 | **CI/CD** | GitHub Actions + Firebase App Distribution |
@@ -48,9 +71,13 @@ The application follows **Clean Architecture** principles separated into three d
 
 ## 🚀 Getting Started
 
+### GitHub Repository
+
+🔗 **Repository Link**: [https://github.com/SlashGil/marvel](https://github.com/SlashGil/marvel)
+
 ### Prerequisites
 
-- **Android Studio** Ladybug (2024.2.1) or newer
+- **Android Studio** Ladybug or newer
 - **JDK 17**
 - **Android SDK** API 37 (minSdk 29, targetSdk 37)
 
@@ -58,7 +85,7 @@ The application follows **Clean Architecture** principles separated into three d
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/marvel.git
+   git clone https://github.com/SlashGil/marvel.git
    cd marvel
    ```
 
@@ -66,23 +93,19 @@ The application follows **Clean Architecture** principles separated into three d
    - Open the project directory in Android Studio.
    - Sync Gradle project files (`./gradlew sync`).
 
-3. **Configure Marvel API Credentials (Optional)**:
-   - Request a free API key at [developer.marvel.com](https://developer.marvel.com/).
-   - Update `PUBLIC_KEY` and `PRIVATE_KEY` in `MarvelAuthInterceptor.kt` or pass them via build environment variables.
-
-4. **Run the App**:
+3. **Run the App**:
    ```bash
-   ./gradlew assembleDebug
+   ./gradlew assembleDevDebug
    ```
 
 ---
 
 ## 🧪 Running Tests
 
-Execute the unit test suite across Domain, Data, and Presentation layers:
+Execute the unit test suite across Domain, Data, Local Room DataSource, and Presentation layers:
 
 ```bash
-./gradlew testDebugUnitTest
+./gradlew testDevDebugUnitTest
 ```
 
 All tests execute headlessly with MockK and Kotlinx Coroutines Test dispatchers.
@@ -95,30 +118,15 @@ The project includes a complete GitHub Actions pipeline defined in `.github/work
 
 1. **Build & Test**:
    - Compiles code with Java 17.
-   - Runs unit tests (`./gradlew testDebugUnitTest`).
-   - Builds Debug APK (`./gradlew assembleDebug`).
+   - Runs unit tests (`./gradlew testDevDebugUnitTest`).
+   - Builds Debug APK (`./gradlew assembleDevDebug`).
    - Saves APK artifacts (`marvel-debug-apk`).
 
 2. **Firebase Distribution**:
    - Automatically deploys the debug APK to **Firebase App Distribution** on pushes to `main`/`master`.
 
-### GitHub Secrets Required for CI/CD
-
-Configure these repository secrets in GitHub (**Settings > Secrets and variables > Actions**):
-
-- **`GOOGLE_SERVICES_JSON`**: The contents of your `google-services.json` file.
-- **`FIREBASE_SERVICE_ACCOUNT_KEY`**: Service account private key JSON from Firebase Console.
-- **`FIREBASE_APP_ID`**: App ID from Firebase Console (`1:xxxxxx:android:xxxxxx`).
-
----
-
-## 🔒 Security & Privacy
-
-- `google-services.json` is strictly excluded from version control via `.gitignore` and generated dynamically in CI/CD pipeline runs from encrypted GitHub secrets.
-- All API network traffic uses HTTPS endpoints (`https://gateway.marvel.com/v1/public/`).
-
 ---
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE). Data and images provided by © Marvel.
+This project is open source and available under the [MIT License](LICENSE).

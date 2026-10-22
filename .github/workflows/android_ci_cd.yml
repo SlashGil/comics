@@ -42,7 +42,7 @@ jobs:
       - name: Upload Debug APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: marvel-dev-debug-apk
+          name: comics-dev-debug-apk
           path: app/build/outputs/apk/dev/debug/app-dev-debug.apk
 
   deploy_firebase:
