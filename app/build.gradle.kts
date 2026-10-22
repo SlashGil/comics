@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.slashgil.marvel"
+    namespace = "com.slashgil.comics"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.slashgil.marvel"
+        applicationId = "com.slashgil.comics"
         minSdk = 29
         targetSdk = 37
         versionCode = 1
